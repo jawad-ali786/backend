@@ -14,18 +14,11 @@ if (process.env.NODE_ENV !== "PRODUCTION") {
 }
 
 app.use(express.json());
-app.use(cors({
-  origin: "https://anxious-scrubs-elk.cyclic.app",
-  methods:["GET","PUT","POST","DELETE","FETCH"]
-}));
+app.use(cors());
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(fileUpload());
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
+
 // Route Imports
 const product = require("./routes/productRoute");
 const user = require("./routes/userRoute");
